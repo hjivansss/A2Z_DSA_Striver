@@ -8,13 +8,14 @@ public class LL {
     public LL(){
         this.size=0;
     }
+
     private class Node{
         private int value;
         private Node next;
 
         //Constructor
         public Node(int value){
-            this.value=value;
+            this.value = value;
         }
 
         //Constructor
