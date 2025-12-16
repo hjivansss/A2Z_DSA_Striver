@@ -1,0 +1,200 @@
+[33mcommit f2a42a7017c30c01e1d9bb2c42627c96f989d637[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: H Jivan Singha <hjivansingha123@gmail.com>
+Date:   Mon Aug 11 17:36:42 2025 +0530
+
+    Basic_maths
+
+[1mdiff --git a/src/Basic_Maths/Check_Palindrome.java b/src/Basic_Maths/Check_Palindrome.java[m
+[1mnew file mode 100644[m
+[1mindex 0000000..b3a8794[m
+[1m--- /dev/null[m
+[1m+++ b/src/Basic_Maths/Check_Palindrome.java[m
+[36m@@ -0,0 +1,21 @@[m
+[32m+[m[32mpackage Basic_Maths;[m
+[32m+[m
+[32m+[m[32mpublic class Check_Palindrome {[m
+[32m+[m[32m    public static void main(String[] args) {[m
+[32m+[m[32m        boolean b=checkPalindrome(787);[m
+[32m+[m[32m        System.out.println(b);[m
+[32m+[m[32m    }[m
+[32m+[m[32m    public static boolean checkPalindrome(int n){[m
+[32m+[m[32m        int revSum=0;[m
+[32m+[m[32m        int temp =n;[m
+[32m+[m[32m        while(n!=0){[m
+[32m+[m[32m            int lastDigit=n%10;[m
+[32m+[m[32m            revSum=revSum*10 + lastDigit;[m
+[32m+[m[32m            n=n/10;[m
+[32m+[m[32m        }[m
+[32m+[m[32m        if(temp<0){[m
+[32m+[m[32m            revSum=revSum+'-';[m
+[32m+[m[32m        }[m
+[32m+[m[32m        return revSum==temp;[m
+[32m+[m[32m    }[m
+[32m+[m[32m}[m
+\ No newline at end of file[m
+[1mdiff --git a/src/Basic_Maths/Count_Digits.java b/src/Basic_Maths/Count_Digits.java[m
+[1mnew file mode 100644[m
+[1mindex 0000000..4956903[m
+[1m--- /dev/null[m
+[1m+++ b/src/Basic_Maths/Count_Digits.java[m
+[36m@@ -0,0 +1,22 @@[m
+[32m+[m[32mpackage Basic_Maths;[m
+[32m+[m
+[32m+[m[32mpublic class Count_Digits{[m
+[32m+[m[32m    public static void main(String[] args  ){[m
+[32m+[m[32m        int count = countDigits(969857657);[m
+[32m+[m[32m        System.out.println(count);[m
+[32m+[m[32m    }[m
+[32m+[m[32m    public static int countDigits(int n){[m
+[32m+[m[32m        //edge case,if n=1, its one digit number[m
+[32m+[m[32m        if(n==0){[m
+[32m+[m[32m            return 1;[m
+[32m+[m[32m        }[m
+[32m+[m
+[32m+[m[32m        int count=0;[m
+[32m+[m[32m        while(n!=0){[m
+[32m+[m[32m            n=n/10;[m
+[32m+[m[32m            count ++;[m
+[32m+[m[32m        }[m
+[32m+[m[32m        return count;[m
+[32m+[m
+[32m+[m[32m    }[m
+[32m+[m[32m}[m
+\ No newline at end of file[m
+[1mdiff --git a/src/Basic_Maths/GCD_HCF.java b/src/Basic_Maths/GCD_HCF.java[m
+[1mnew file mode 100644[m
+[1mindex 0000000..400f088[m
+[1m--- /dev/null[m
+[1m+++ b/src/Basic_Maths/GCD_HCF.java[m
+[36m@@ -0,0 +1,44 @@[m
+[32m+[m[32mpackage Basic_Maths;[m
+[32m+[m
+[32m+[m[32mpublic class GCD_HCF {[m
+[32m+[m[32m    public static void main(String[] args) {[m
+[32m+[m[32m        System.out.println(findGCD(20,40));[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m    /* Good Approach[m
+[32m+[m[32m    public  static int findGCD(int a , int b){[m
+[32m+[m[32m        int gcd=1;[m
+[32m+[m[32m        int i=1;[m
+[32m+[m[32m        while(i<=min(a,b)){[m
+[32m+[m[32m            if (a % i == 0 && b % i == 0 && i>=gcd) {[m
+[32m+[m[32m                gcd=i;[m
+[32m+[m[32m               }[m
+[32m+[m[32m            i++;[m
+[32m+[m[32m            }[m
+[32m+[m[32m            return gcd;[m
+[32m+[m[32m        }[m
+[32m+[m
+[32m+[m
+[32m+[m[32m    public static int min(int a ,int b) {[m
+[32m+[m[32m        if (a < b) {[m
+[32m+[m[32m            return a;[m
+[32m+[m[32m        } else {[m
+[32m+[m[32m            return b;[m
+[32m+[m[32m        }[m
+[32m+[m
+[32m+[m[32m    }[m
+[32m+[m[32m    */[m
+[32m+[m
+[32m+[m[32m    /*Optimal - use Euclidean Algo*/[m
+[32m+[m[32m    public static int findGCD(int a ,int b){[m
+[32m+[m[32m        while(a>0 && b>0){[m
+[32m+[m[32m            if(a>b){a=a%b;[m
+[32m+[m[32m            }else {b=b%a;}[m
+[32m+[m[32m        }[m
+[32m+[m[32m        if (a==0){[m
+[32m+[m[32m            return b;[m
+[32m+[m[32m        }[m
+[32m+[m[32m        return a;[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m}[m
+\ No newline at end of file[m
+[1mdiff --git a/src/Basic_Maths/Prime_Check.java b/src/Basic_Maths/Prime_Check.java[m
+[1mnew file mode 100644[m
+[1mindex 0000000..62e855b[m
+[1m--- /dev/null[m
+[1m+++ b/src/Basic_Maths/Prime_Check.java[m
+[36m@@ -0,0 +1,22 @@[m
+[32m+[m[32mpackage Basic_Maths;[m
+[32m+[m
+[32m+[m[32mpublic class Prime_Check {[m
+[32m+[m[32m    public static void main(String[] args) {[m
+[32m+[m[32m        System.out.println(checkPrime(12));[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m    public static boolean checkPrime(int n){[m
+[32m+[m[32m        int count =0;[m
+[32m+[m[32m        for (int i = 1; i*i<= n; i++) {[m
+[32m+[m[32m            if (n % i == 0) {[m
+[32m+[m[32m                count++;[m
+[32m+[m[32m                if (n / i != i) {[m
+[32m+[m[32m                    count++;[m
+[32m+[m[32m                }[m
+[32m+[m[32m            }[m
+[32m+[m[32m        }[m
+[32m+[m[32m        if(count==2){[m
+[32m+[m[32m            return true;[m
+[32m+[m[32m        }else return false;[m
+[32m+[m[32m    }[m
+[32m+[m[32m}[m
+\ No newline at end of file[m
+[1mdiff --git a/src/Basic_Maths/Print_All_Divisors.java b/src/Basic_Maths/Print_All_Divisors.java[m
+[1mnew file mode 100644[m
+[1mindex 0000000..ef2b21f[m
+[1m--- /dev/null[m
+[1m+++ b/src/Basic_Maths/Print_All_Divisors.java[m
+[36m@@ -0,0 +1,27 @@[m
+[32m+[m[32mpackage Basic_Maths;[m
+[32m+[m[32mimport java.util.ArrayList;[m
+[32m+[m[32mimport java.util.Comparator;[m
+[32m+[m[32mpublic class Print_All_Divisors {[m
+[32m+[m[32m    public static void main(String[] args) {[m
+[32m+[m[32m        checkDivisors(36);[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m    public static void checkDivisors(int n) {[m
+[32m+[m[32m        ArrayList<Integer> divisors = new ArrayList<>();[m
+[32m+[m[32m        int sqrtN = (int) Math.sqrt(n);[m
+[32m+[m[32m        for (int i = 1; i <= sqrtN; i++) {[m
+[32m+[m[32m            if (n % i == 0) {[m
+[32m+[m[32m                divisors.add(i);[m
+[32m+[m[32m                if (n / i != i) {[m
+[32m+[m[32m                    divisors.add(n / i);[m
+[32m+[m[32m                }[m
+[32m+[m[32m            }[m
+[32m+[m[32m        }[m
+[32m+[m[32m        //Collections.sort(divisors);[m
+[32m+[m[32m        divisors.sort(Comparator.naturalOrder());[m
+[32m+[m[32m        for (int a : divisors) {[m
+[32m+[m[32m            System.out.println(a + " ");[m
+[32m+[m[32m        }[m
+[32m+[m
+[32m+[m[32m    }[m
+[32m+[m[32m}[m
+\ No newline at end of file[m
+[1mdiff --git a/src/Basic_Maths/Reverse_number.java b/src/Basic_Maths/Reverse_number.java[m
+[1mnew file mode 100644[m
+[1mindex 0000000..2455f2b[m
+[1m--- /dev/null[m
+[1m+++ b/src/Basic_Maths/Reverse_number.java[m
+[36m@@ -0,0 +1,16 @@[m
+[32m+[m[32mpackage Basic_Maths;[m
+[32m+[m
+[32m+[m[32mpublic class Reverse_number {[m
+[32m+[m[32m    public static void main(String[] args) {[m
+[32m+[m[32m        System.out.println( ReverseNumber(74756));[m
+[32m+[m[32m    }[m
+[32m+[m[32m    public static int ReverseNumber(int n){[m
+[32m+[m[32m        int revNum=0;[m
+[32m+[m[32m        while(n!=0){[m
+[32m+[m[32m            int lastDigit=n%10;[m
+[32m+[m[32m            revNum=revNum*10 + lastDigit;[m
+[32m+[m[32m            n=n/10;[m
+[32m+[m[32m        }[m
+[32m+[m[32m        return revNum;[m
+[32m+[m[32m    }[m
+[32m+[m[32m}[m
+\ No newline at end of file[m
